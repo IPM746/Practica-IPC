@@ -143,17 +143,17 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" text="&lt;">
+                  <Button fx:id="BotonAnterior" mnemonicParsing="false" onAction="#Anterioravatar" text="&lt;">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <ImageView fitHeight="80.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageView" fitHeight="80.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/logo.png" />
                      </image>
                   </ImageView>
-                  <Button mnemonicParsing="false" text="&gt;" textFill="#003366">
+                  <Button fx:id="BotonSiguiente" mnemonicParsing="false" onAction="#Siguienteavatar" text="&gt;" textFill="#003366">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -175,6 +175,7 @@
                   <Insets />
                </opaqueInsets>
             </HBox>
+            <Hyperlink fx:id="Hyperselection" alignment="CENTER" onAction="#Selectioncomputer" prefHeight="24.0" prefWidth="676.0" text="Selecciona desde el ordenador" textAlignment="CENTER" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #0077b6; -fx-border-radius: 8;" text="Crear cuenta" textAlignment="CENTER" textFill="WHITE">
