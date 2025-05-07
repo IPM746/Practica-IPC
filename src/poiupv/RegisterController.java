@@ -50,6 +50,8 @@ public class RegisterController implements Initializable {
     private Label Nombrexiste;
     @FXML
     private Label ErrContrasenaNoIguales;
+    @FXML
+    private Label ContrasenErr;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         updateAvatar();
@@ -109,13 +111,40 @@ public class RegisterController implements Initializable {
     
     
     private void validarContrasenas() {
+    String password = contrasena.getText();
+
     // Verificar si las contraseñas coinciden
-    if (!contrasena.getText().equals(contrasenaRepetida.getText())) {
+    if (!password.equals(contrasenaRepetida.getText())) {
         ErrContrasenaNoIguales.setVisible(true);
     } else {
-        ErrContrasenaNoIguales.setVisible(false);
+        ErrContrasenaNoIguales.setVisible(false); 
+    }
+
+    // Validar longitud de la contraseña (entre 8 y 20 caracteres)
+    if (password.length() < 8 || password.length() > 20) {
+        ContrasenErr.setVisible(true);
+        ContrasenErr.setText("Debe ser entre 8 y 20 caracteres");
+    }
+    // Validar que tenga al menos una mayúscula
+    else if (!password.matches(".*[A-Z].*")) {
+        ContrasenErr.setVisible(true);
+        ContrasenErr.setText("Debe contener al menos una mayúscula.");
+    }
+    // Validar que tenga al menos una minúscula
+    else if (!password.matches(".*[a-z].*")) {
+        ContrasenErr.setVisible(true);
+        ContrasenErr.setText("Debe contener al menos una minúscula.");
+    }
+    // Validar que tenga al menos un carácter especial
+    else if (!password.matches(".*[!@#$%&*()\\-+=].*")) {
+        ContrasenErr.setVisible(true);
+        ContrasenErr.setText("Debe incluir un carácter especial.");
+    } 
+    else {
+        ContrasenErr.setVisible(false);
+    }
     }
 }
-    }
+
     
 
