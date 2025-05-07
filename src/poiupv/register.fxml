@@ -30,10 +30,13 @@
                   </Label>
                </children>
             </HBox>
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="602.0" text="Crea tu perfil para comenzar" textFill="#555555">
+            <Label alignment="CENTER" prefHeight="27.0" prefWidth="668.0" text="Crea tu perfil para comenzar" textFill="#555555">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
             </Label>
             <Separator prefWidth="200.0" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="267.0">
@@ -51,6 +54,11 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
+                  <Label fx:id="Nombrexiste" prefHeight="18.0" prefWidth="186.0" text="Nombre ya existente" textFill="RED" visible="false">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
                <opaqueInsets>
                   <Insets />
@@ -59,7 +67,7 @@
                   <Insets />
                </VBox.margin>
                <padding>
-                  <Insets top="10.0" />
+                  <Insets left="220.0" top="10.0" />
                </padding>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -92,14 +100,19 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <PasswordField promptText="Contraseña">
+                  <PasswordField fx:id="contrasena" promptText="Contraseña">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </PasswordField>
+                  <Label prefHeight="18.0" prefWidth="186.0">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
                <padding>
-                  <Insets top="10.0" />
+                  <Insets left="220.0" top="10.0" />
                </padding>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="208.0" prefHeight="100.0" prefWidth="200.0">
@@ -112,14 +125,19 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <PasswordField promptText="Confirmar contraseña">
+                  <PasswordField fx:id="contrasenaRepetida" promptText="Confirmar contraseña">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </PasswordField>
+                  <Label fx:id="ErrContrasenaNoIguales" prefHeight="18.0" prefWidth="186.0" text="Las contraseñas deben ser iguales" textFill="RED" visible="false">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
                <padding>
-                  <Insets top="10.0" />
+                  <Insets left="220.0" top="10.0" />
                </padding>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -132,7 +150,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <DatePicker prefHeight="30.0" prefWidth="198.0" promptText="Fecha de nacimiento" />
+                  <DatePicker fx:id="selectionFecha" onAction="#onSelectionFecha" prefHeight="30.0" prefWidth="198.0" promptText="Fecha de nacimiento" />
                </children>
                <VBox.margin>
                   <Insets />

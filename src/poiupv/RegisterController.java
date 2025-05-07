@@ -12,7 +12,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -37,17 +40,38 @@ public class RegisterController implements Initializable {
      * Initializes the controller class.
      */
     private int currentIndex = 0;
+    @FXML
+    private PasswordField contrasena;
+    @FXML
+    private PasswordField contrasenaRepetida;
+    @FXML
+    private DatePicker selectionFecha;
+    @FXML
+    private Label Nombrexiste;
+    @FXML
+    private Label ErrContrasenaNoIguales;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         updateAvatar();
-    }    
+        contrasena.textProperty().addListener((observable, oldValue, newValue) -> validarContrasenas());
+        contrasenaRepetida.textProperty().addListener((observable, oldValue, newValue) -> validarContrasenas());
+}    
     private final List<String> avatarPaths = List.of(
-        "/avatars/avatar1.png",
-        "/avatars/avatar2.png",
-        "/avatars/avatar3.png"
-    );
+        "/poiupv/avatars/avatar1.jpg",
+        "/poiupv/avatars/avatar2.jpg",
+        "/poiupv/avatars/avatar3.jpg"
+        );
     private void updateAvatar() {
-        Image image = new Image(getClass().getResourceAsStream(avatarPaths.get(currentIndex)));
+        
+        String path = avatarPaths.get(currentIndex);
+        var stream = getClass().getResourceAsStream(path);
+        if (stream == null) {
+            
+            System.err.println("No se pudo cargar el avatar: " + path);
+            return;
+            
+        }
+        Image image = new Image(stream);
         imageView.setImage(image);
     }
     @FXML
@@ -67,6 +91,7 @@ public class RegisterController implements Initializable {
 
     @FXML
     private void Anterioravatar(ActionEvent event) {
+        
         currentIndex = (currentIndex - 1 + avatarPaths.size()) % avatarPaths.size();
         updateAvatar();
     }
@@ -76,6 +101,21 @@ public class RegisterController implements Initializable {
         currentIndex = (currentIndex + 1) % avatarPaths.size();
         updateAvatar();
     }
+   
+
+    @FXML
+    private void onSelectionFecha(ActionEvent event) {
+    }
+    
+    
+    private void validarContrasenas() {
+    // Verificar si las contraseñas coinciden
+    if (!contrasena.getText().equals(contrasenaRepetida.getText())) {
+        ErrContrasenaNoIguales.setVisible(true);
+    } else {
+        ErrContrasenaNoIguales.setVisible(false);
+    }
+}
     }
     
 
